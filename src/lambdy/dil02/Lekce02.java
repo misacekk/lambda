@@ -10,10 +10,10 @@ public class Lekce02 {
     public static void main(String[] args) {
         // Odkomentuj prave jedno volani podle pracovniho snimku.
         // Prvni spusteni je bez vypisu; zatim neni zapnuta zadna uloha.
-        // ukazkaSoucet();
-        // ukazkaSlova();
-        // ukazkaDuplicity();
-        // delkySlov();
+        ukazkaSoucet();
+        ukazkaSlova();
+        ukazkaDuplicity();
+        delkySlov();
     }
 
     // Spolecna ukazka: podle pokynu v prezentaci.
@@ -29,6 +29,14 @@ public class Lekce02 {
     // Spolecna ukazka: podle pokynu v prezentaci.
     static void ukazkaSlova() {
         List<String> words = List.of("Ahoj", "svete", "", "Afrika", "Java");
+        for (String word : words) {
+            if (word.startsWith("A")) {
+                System.out.println(word);
+            }
+        }
+        words.stream()
+                .filter(word -> word.startsWith("A"))
+                .forEach(word -> System.out.println(word));
         // TODO ukazka: postupuj podle pracovniho snimku.
     }
 

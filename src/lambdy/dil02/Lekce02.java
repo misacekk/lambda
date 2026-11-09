@@ -23,7 +23,9 @@ public class Lekce02 {
             sum += i;
         }
         System.out.println(sum);
-        // TODO ukazka: postupuj podle pracovniho snimku.
+
+        int streamSum = IntStream.rangeClosed(1, 100).sum();
+        System.out.println(streamSum);
     }
 
     // Spolecna ukazka: podle pokynu v prezentaci.
@@ -37,18 +39,36 @@ public class Lekce02 {
         words.stream()
                 .filter(word -> word.startsWith("A"))
                 .forEach(word -> System.out.println(word));
-        // TODO ukazka: postupuj podle pracovniho snimku.
     }
 
     // Spolecna ukazka: podle pokynu v prezentaci.
     static void ukazkaDuplicity() {
         List<Integer> numbers = List.of(1, 2, 2, 3, 1);
-        // TODO ukazka: postupuj podle pracovniho snimku.
+
+        List<Integer> unique = new ArrayList<>();
+        for (int n : numbers) {
+            if (!unique.contains(n)) {
+                unique.add(n);
+            }
+        }
+        System.out.println(unique);
+
+        List<Integer> uniqueStream = numbers.stream()
+                .distinct()
+                .toList();
+        System.out.println(uniqueStream);
     }
 
     // Uloha 2.1. Připravený vstup dá [4, 6], prázdný vstup [].
     static void delkySlov() {
         List<String> input = List.of("Ahoj", "", "Afrika", "Java", "Ahoj");
-        // TODO 2.1: Délky vybraných slov. Zde pis sve reseni.
+
+        List<Integer> lengths = input.stream()
+                .filter(s -> s.startsWith("A"))
+                .distinct()
+                .map(s -> s.length())
+                .toList();
+
+        System.out.println(lengths);
     }
 }

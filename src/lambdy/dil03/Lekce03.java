@@ -119,7 +119,13 @@ public class Lekce03 {
 
     // Uloha 3.5. Celkem tři řádky Ahoj; volání s nulou nic nepřidá.
     static void pozdrav() {
-
+        /*Greeting greeting = (text, count) -> {
+            for (int i = 0; i < count; i++) {
+                System.out.println(text);
+            }
+        };
+        greeting.repeat("Ahoj", 3);
+        greeting.repeat("Ahoj", 0);*/
     }
 
     // Uloha 3.6. Výpis ADAM a ALENA. Pro prázdný seznam žádný výpis.

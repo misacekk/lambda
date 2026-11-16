@@ -14,12 +14,14 @@ public class Lekce05 {
         // ukazkaSeznam();
         // zachyceni();
         // soucet();
-        // propojeni();
+        propojeni();
     }
 
     // Spolecna ukazka: podle pokynu v prezentaci.
     static void ukazkaLimit() {
         int limit = 10;
+        Runnable r = () -> System.out.println(limit);
+        r.run();
         // TODO ukazka: postupuj podle pracovniho snimku.
     }
 
@@ -38,12 +40,31 @@ public class Lekce05 {
     // Uloha 5.2. Pro [1, 2, 3] dva řádky 6. Pro [] dva řádky 0.
     static void soucet() {
         List<Integer> numbers = List.of(1, 2, 3);
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        System.out.println(sum);
         // TODO 5.2: Dvě verze součtu. Zde pis sve reseni.
     }
 
     // Uloha 5.3. Adam a Alena. Prázdný vstup dá prázdný seznam bez výpisu.
     static void propojeni() {
         List<String> names = List.of("Eva", "", "Adam", "Alena");
+        String prefix ="A";
+        Predicate<String> zacinaPrefixem = name -> name.startsWith(prefix);
+        Function<String, Student> vytvor = Student::new;
+        Supplier<List<Student>> listSupplier = ArrayList::new;
+        Consumer<Student> vypisJmeno = student -> System.out.println(student.getName());
+        List<Student> students = listSupplier.get();
+        for (String name : names) {
+            if (zacinaPrefixem.test(name)) {
+                students.add(vytvor.apply(name));
+            }
+        }
+        for (Student student : students) {
+            System.out.println(student.getName());
+        }
         // TODO 5.3: Propojení naučených částí. Zde pis sve reseni.
     }
 }
